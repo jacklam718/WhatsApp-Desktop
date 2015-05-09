@@ -2,12 +2,13 @@
   "name": "WhatsApp-Desktop",
   "version": "0.0.0",
   "description": "A whatsapp desktop app",
-  "main": "app.js",
+  "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jack Lam",
   "license": "MIT",
-  "devDependencies": {
+  "dependencies": {
+    "whatsapi": "^1.0.2"
   }
 }
