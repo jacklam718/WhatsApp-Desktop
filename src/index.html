@@ -1,12 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="WhatsAppDesktop">
   <head>
+    <!-- <base href="/"> -->
     <title>WhatsApp Desktop</title>
 
     <!-- Angular Materal -->
     <link rel="stylesheet" href="vendor/bower_components/angular-material/angular-material.css">
+    <link rel="stylesheet" href="stylesheets/app.css">
   </head>
   <body>
+    <div layout="column" layout-fill>
+      <md-toolbar md-scroll-shrink>
+        <div class="md-toolbar-tools">
+          <h3>
+            <span>WhatsApp</span>
+          </h3>
+        </div>
+      </md-toolbar>
+
+      <md-sidenav class="md-sidenav-left md-whiteframe-z1" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+        <md-toolbar>
+          <h1 class="md-toolbar-tools">Sidenav Left</h1>
+        </md-toolbar>
+        <md-content layout-padding>
+          <md-button ng-click="close()" class="md-primary" hide-gt-md>
+            Close Sidenav Left
+          </md-button>
+          <p hide-md show-gt-md>
+            This sidenav is locked open on your device. To go back to the default behavior,
+            narrow your display.
+          </p>
+        </md-content>
+      </md-sidenav>
+
+      <md-content style="height: 705px;">
+        <!-- render partial template here -->
+        <div ng-view style="height: 100%;">
+        </div>
+      </md-content>
+    </div>
 
     <!-- AngularJs -->
     <script src="vendor/bower_components/angular/angular.js"></script>
@@ -25,7 +57,22 @@
     <script src="vendor/bower_components/hyper-content-for/dist/hyper-content-for.js"></script>
     <script src="vendor/bower_components/angular-material-icons/angular-material-icons.js"></script>
 
+    <!-- <script src="javascripts/app.js"></script> -->
+
     <!-- custom scripts -->
-    <script src="javscripts/ng-app/ng-app.js"></script>
+    <script src="ng-app/app.js"></script>
+
+    <!-- factories -->
+    <script src="ng-app/factories/whatsapp-factory.js"></script>
+    <script src="ng-app/factories/login-local-storage-factory.js"></script>
+
+    <!-- services -->
+    <script src="ng-app/services/login-service.js"></script>
+
+    <!-- controllers -->
+    <script src="ng-app/components/slidebar/slidebar-controller.js"></script>
+
+    <!-- chats page -->
+    <script src="ng-app/chats/chat-controller.js"></script>
   </body>
 </html>

@@ -2,12 +2,19 @@
   "name": "WhatsApp-Desktop",
   "version": "0.0.0",
   "description": "A whatsapp desktop app",
-  "main": "app.js",
+  "main": "src/index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "Gulp"
   },
   "author": "Jack Lam",
   "license": "MIT",
+  "dependencies": {
+    "gulp-util": "^3.0.4",
+    "node-sass": "^3.0.0",
+    "whatsapi": "^1.0.2"
+  },
   "devDependencies": {
+    "gulp": "^3.8.11",
+    "node-webkit-builder": "^1.0.11"
   }
 }

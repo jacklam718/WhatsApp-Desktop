@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "description": "A whatsapp desktop app",
   "main": "index.html",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "Jack Lam",
   "license": "MIT",
-  "dependencies": {
-    "whatsapi": "^1.0.2"
+  "window": {
+    "width": 1000,
+    "height": 800
+  },
+  "webkit": {
+    "plugin": true
   }
 }
