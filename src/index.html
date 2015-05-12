@@ -10,28 +10,13 @@
   </head>
   <body>
     <div layout="column" layout-fill>
-      <md-toolbar md-scroll-shrink>
+      <md-toolbar>
         <div class="md-toolbar-tools">
           <h3>
             <span>WhatsApp</span>
           </h3>
         </div>
       </md-toolbar>
-
-      <md-sidenav class="md-sidenav-left md-whiteframe-z1" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
-        <md-toolbar>
-          <h1 class="md-toolbar-tools">Sidenav Left</h1>
-        </md-toolbar>
-        <md-content layout-padding>
-          <md-button ng-click="close()" class="md-primary" hide-gt-md>
-            Close Sidenav Left
-          </md-button>
-          <p hide-md show-gt-md>
-            This sidenav is locked open on your device. To go back to the default behavior,
-            narrow your display.
-          </p>
-        </md-content>
-      </md-sidenav>
 
       <md-content style="height: 705px;">
         <!-- render partial template here -->
@@ -63,16 +48,17 @@
     <script src="ng-app/app.js"></script>
 
     <!-- factories -->
-    <script src="ng-app/factories/whatsapp-factory.js"></script>
     <script src="ng-app/factories/login-local-storage-factory.js"></script>
 
     <!-- services -->
     <script src="ng-app/services/login-service.js"></script>
+    <script src="ng-app/services/whatsapp-service.js"></script>
 
     <!-- controllers -->
     <script src="ng-app/components/slidebar/slidebar-controller.js"></script>
 
     <!-- chats page -->
+    <script src="ng-app/login/login-controller.js"></script>
     <script src="ng-app/chats/chat-controller.js"></script>
   </body>
 </html>
