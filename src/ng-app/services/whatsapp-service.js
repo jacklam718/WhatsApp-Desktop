@@ -1,12 +1,12 @@
 "use strict";
 
-var WhatsAppFactory = function($rootScope, $q) {
+var WhatsAppService = function($rootScope, $q) {
   var self = this;
   var whatsapi = require('whatsapi');
 
   return {
     createAdapter: function(argument) {
-      self.wa = whatsapi(argument);
+      self.wa = whatsapi.createAdapter(argument);
     },
 
     login: function(logged) {
@@ -54,9 +54,10 @@ var WhatsAppFactory = function($rootScope, $q) {
     },
 
     isLoggedIn: function() {
-      return self.wa.isLoggedIn();
+      console.log(self.wa);
+      return self.wa;
     }
   }
 };
 
-WhatsAppDesktop.factory("WhatsAppFactory", WhatsAppFactory);
+WhatsAppDesktop.factory("WhatsAppService", WhatsAppService);
