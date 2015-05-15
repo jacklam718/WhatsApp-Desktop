@@ -7,26 +7,29 @@
             Login Page
           </h2>
 
-          <md-input-container>
+          <form ng-submit="login()">
             <md-input-container>
               <label>Name</label>
-              <input ng-model="user.title">
+              <input ng-model="whatsappInfo.username">
             </md-input-container>
 
             <md-input-container>
               <label>Phone Number</label>
-              <input ng-model="user.title">
+              <input ng-model="whatsappInfo.msisdn">
             </md-input-container>
 
-          <md-input-container>
-            <label>Coutry Code</label>
-            <input ng-model="user.title">
-          </md-input-container>
+            <md-input-container>
+              <label>Coutry Code</label>
+              <input ng-model="whatsappInfo.ccode">
+            </md-input-container>
 
-          <md-input-container>
-            <label>Password</label>
-            <input ng-model="user.title">
-          </md-input-container>
+            <md-input-container>
+              <label>Password</label>
+              <input ng-model="whatsappInfo.password">
+            </md-input-container>
+
+            <md-button class="md-raised" type="submit">Login</md-button>
+          </form>
         </md-content>
       </div>
     </md-content>
