@@ -1,0 +1,19 @@
+md-toolbar {
+  background-color: #EEEDEF !important;
+  color: #6B616C !important;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.26);
+}
+
+md-sidenav {
+  position: fixed !important;
+
+}
+
+.section-login {
+  /*background-image: url('../assets/images/bg-whatsapp.jpg');*/
+  /*background-size: cover;*/
+}
+
+.login-input-container {
+  padding: 100px 0 100px 0;
+}
