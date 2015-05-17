@@ -23,8 +23,7 @@ var LoginService = function($rootScope, $q, WhatsAppService, SERVICE_EVENTS) {
 
   this.login = function(waAccountInfo) {
     onLoginIn();
-    WhatsAppService.createAdapter(waAccountInfo);
-    WhatsAppService.login().then(loginSucess, loginFailure);
+    WhatsAppService.login(undefined, waAccountInfo).then(loginSucess, loginFailure);
   };
 };
 
