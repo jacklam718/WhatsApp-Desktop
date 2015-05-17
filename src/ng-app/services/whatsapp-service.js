@@ -2,12 +2,13 @@
 
 var WhatsAppService = function($rootScope, $q) {
   var whatsApi = require('whatsapi');
-
+  fs = require("fs");
+  console.log(global);
   return {
     createAdapter: function(argument) {
       var self = this;
       self.whatsApi = whatsApi.createAdapter(argument);
-      wa = self.whatsApi
+      wa = self.whatsApi;
       console.log("createAdapter: ", self.whatsApi);
     },
 
@@ -25,6 +26,7 @@ var WhatsAppService = function($rootScope, $q) {
             deferred.reject(err);
             return;
           }
+          
           console.log("Logged in to WA server");
           self.whatsApi.sendIsOnline();
           deferred.resolve(true);
@@ -54,15 +56,17 @@ var WhatsAppService = function($rootScope, $q) {
       }
 
       if (handler === undefined) {
-        handler = function(err, result, fullId) {
+        handler = function(err, res) {
           if (err) {
             console.log(err);
             deffered.reject(err);
             return;
           }
 
-          deffered.resolve(result, fullId);
-          console.log(result);
+          deffered.resolve(res);
+
+          fs.writeFile('../node_modules/whatsapi/media/profilepic-'+res.from+(res.isPreview?'-preview':'-full')+'.jpg', res.pictureData);
+          console.log(res);
         }
       }
 
