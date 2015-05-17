@@ -1,15 +1,22 @@
 "use strict";
 
-var LoginController = function($scope, $rootScope, $location, $interval, $route, LoginService, WhatsAppService, SERVICE_EVENTS) {
+var LoginController = function($scope, $rootScope, $location, $localStorage, LoginService, WhatsAppService, SERVICE_EVENTS) {
   $scope.whatsappInfo = {};
   $scope.isLoggedIn = false;
   $scope.onLoginIn = false;
 
+  var saveWaInfoOnLocalStorage = function() {
+    $localStorage.whatsappInfo = $scope.whatsappInfo;
+  }
+
+  var loadWaInfoOnLocalStorage = function() {
+    $scope.whatsappInfo = $localStorage.whatsappInfo;
+  }
+
   $scope.login = function() {
+    saveWaInfoOnLocalStorage()
     LoginService.login($scope.whatsappInfo);
   };
-
-  $scope.determinateValue = 100;
 
   $rootScope.$on(SERVICE_EVENTS.onLoginIn, function() {
     $scope.onLoginIn = true;
@@ -25,6 +32,8 @@ var LoginController = function($scope, $rootScope, $location, $interval, $route,
     $scope.isLoggedIn = false;
     $scope.onLoginIn = false;
   });
+
+  loadWaInfoOnLocalStorage();
 };
 
 WhatsAppDesktop.controller("LoginController", LoginController);

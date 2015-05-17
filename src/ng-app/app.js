@@ -6,6 +6,7 @@ var WhatsAppDesktop = angular.module("WhatsAppDesktop", [
   "ngMaterial",
   "ngCookies",
   "ngMdIcons",
+  "ngStorage",
   "hyperContentFor"
 ]);
 
@@ -31,15 +32,15 @@ var config = function($routeProvider, $stateProvider, $locationProvider, $mdThem
 
 WhatsAppDesktop.config(config);
 
-// WhatsAppDesktop.run(function($rootScope, $location, WhatsAppService) {
-//   if (! WhatsAppService.isLoggedIn()) {
-//     setTimeout(function() {
-//       $rootScope.$apply(function() {
-//         $location.path("/login");
-//       })
-//     }, 0);
-//   }
-// })
+WhatsAppDesktop.run(function($rootScope, $location, $localStorage, LoginService, WhatsAppService) {
+  if (! WhatsAppService.isLoggedIn()) {
+    if ($localStorage.whatsappInfo !== undefined) {
+      LoginService.login($localStorage.whatsappInfo);
+    }
+
+    $location.path("/login");
+  }
+})
 
 WhatsAppDesktop.constant("SERVICE_EVENTS", {
   loginSucess: "login-sucess",
