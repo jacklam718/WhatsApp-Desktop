@@ -1,11 +1,17 @@
 "use strict";
 
-var LoginService = function($rootScope, $q, WhatsAppService, WhatsAppEventHandlerService, SERVICE_EVENTS) {
+var LoginService = function($rootScope, $q, WhatsAppService, SERVICE_EVENTS) {
   var self = this;
 
   console.log(WhatsAppService);
 
+  var onLoginIn = function() {
+    $rootScope.$broadcast(SERVICE_EVENTS.onLoginIn, true);
+    console.log("On Login In...");
+  };
+
   var loginSucess = function() {
+    WhatsAppService.whatsApi.sendIsOnline();
     $rootScope.$broadcast(SERVICE_EVENTS.loginSucess, true);
     console.log("Login Sucess");
   };
@@ -16,15 +22,9 @@ var LoginService = function($rootScope, $q, WhatsAppService, WhatsAppEventHandle
   };
 
   this.login = function(waAccountInfo) {
+    onLoginIn();
     WhatsAppService.createAdapter(waAccountInfo);
-    WhatsAppService.login(function(err) {
-      if (err) {
-        loginFailure(err);
-        return;
-      };
-
-      loginSucess();
-    });
+    WhatsAppService.login().then(loginSucess, loginFailure);
   };
 };
 
