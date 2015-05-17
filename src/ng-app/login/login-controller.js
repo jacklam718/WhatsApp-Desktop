@@ -1,23 +1,29 @@
 "use strict";
 
-var LoginController = function($scope, $rootScope, $location, $route, LoginService, WhatsAppService, SERVICE_EVENTS) {
+var LoginController = function($scope, $rootScope, $location, $interval, $route, LoginService, WhatsAppService, SERVICE_EVENTS) {
   $scope.whatsappInfo = {};
   $scope.isLoggedIn = false;
+  $scope.onLoginIn = false;
 
   $scope.login = function() {
-    console.log($scope.whatsappInfo);
     LoginService.login($scope.whatsappInfo);
   };
 
+  $scope.determinateValue = 100;
+
+  $rootScope.$on(SERVICE_EVENTS.onLoginIn, function() {
+    $scope.onLoginIn = true;
+  });
+
   $rootScope.$on(SERVICE_EVENTS.loginSucess, function() {
     $scope.isLoggedIn = true;
-    $scope.$apply(function() {
-      $location.path("/");
-    });
+    $scope.onLoginIn = false;
+    $location.path("/");
   });
 
   $rootScope.$on(SERVICE_EVENTS.loginFailure, function() {
     $scope.isLoggedIn = false;
+    $scope.onLoginIn = false;
   });
 };
 

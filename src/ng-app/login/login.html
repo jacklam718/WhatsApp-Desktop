@@ -7,6 +7,10 @@
             Login Page
           </h2>
 
+          <div layout="row" md-theme="docs-dark" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate" ng-show="onLoginIn"></md-progress-circular>
+          </div>
+
           <form ng-submit="login()">
             <md-input-container>
               <label>Name</label>
