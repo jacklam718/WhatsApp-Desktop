@@ -1,0 +1,17 @@
+<md-sidenav class="md-sidenav-left md-whiteframe-z1 md-locked-open" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+
+  <md-toolbar class="lists-toolbar">
+    <h1 class="md-toolbar-tools">Name</h1>
+  </md-toolbar>
+
+  <md-content>
+    <md-list role="list">
+      <md-list-item  class="button" ng-click="groupInfo(group.subject, $event)" ng-repeat="group in groups">
+        <div class="md-list-item-text">
+          <md-icon md-icon="cached"></md-icon>
+          <p> {{ group.subject }} </p>
+        </div>
+      </md-list-item>
+    </md-list>
+  </md-content>
+</md-sidenav>
