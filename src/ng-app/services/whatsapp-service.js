@@ -45,6 +45,32 @@ var WhatsAppService = function($rootScope, $q) {
       return deferred.promise;
     },
 
+    getProfilePicture: function(target, handler, small) {
+      var self = this;
+      var deffered = $q.defer();
+
+      if (target === undefined) {
+        target = self.whatsApi.config.msisdn;
+      }
+
+      if (handler === undefined) {
+        handler = function(err, result, fullId) {
+          if (err) {
+            console.log(err);
+            deffered.reject(err);
+            return;
+          }
+
+          deffered.resolve(result, fullId);
+          console.log(result);
+        }
+      }
+
+      self.whatsApi.getProfilePicture(target, small, handler);
+
+      return deffered.promise;
+    },
+
     requestGroupsList: function() {
       var self = this;
       var deferred = $q.defer();
@@ -162,6 +188,16 @@ var WhatsAppService = function($rootScope, $q) {
       }
 
       self.whatsApi.on("receivedVcard", handler);
+    },
+
+    listenALlEvents: function() {
+      this.receivedMessage();
+      this.receivedVideo();
+      this.receivedImage();
+      this.receivedAudio();
+      this.receivedVcard();
+      this.receivedLocation();
+      this.receivedVcard();
     }
   }
 };
