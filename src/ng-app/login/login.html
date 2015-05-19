@@ -7,9 +7,13 @@
             Login Page
           </h2>
 
-          <div layout="row" md-theme="docs-dark" layout-sm="column" layout-align="space-around">
+          <section class="section-progress" layout="row" md-theme="docs-dark" layout-sm="column" layout-align="space-around">
             <md-progress-circular md-mode="indeterminate" ng-show="onLoginIn"></md-progress-circular>
-          </div>
+          </section>
+
+          <section class="section-warning" layout="row" md-theme="default" layout-sm="column" layout-align="space-around">
+            {{errorMessage}}
+          </section>
 
           <form ng-submit="login()">
             <md-input-container>

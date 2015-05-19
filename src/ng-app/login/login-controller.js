@@ -4,6 +4,7 @@ var LoginController = function($scope, $rootScope, $location, $localStorage, Log
   $scope.whatsappInfo = {};
   $scope.isLoggedIn = false;
   $scope.onLoginIn = false;
+  $scope.errorMessage = "";
 
   var saveWaInfoOnLocalStorage = function() {
     $localStorage.whatsappInfo = $scope.whatsappInfo;
@@ -28,7 +29,8 @@ var LoginController = function($scope, $rootScope, $location, $localStorage, Log
     $location.path("/");
   });
 
-  $rootScope.$on(SERVICE_EVENTS.loginFailure, function() {
+  $rootScope.$on(SERVICE_EVENTS.loginFailure, function(err) {
+    $scope.errorMessage = err;
     $scope.isLoggedIn = false;
     $scope.onLoginIn = false;
   });
