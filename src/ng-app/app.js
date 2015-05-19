@@ -11,9 +11,6 @@ var WhatsAppDesktop = angular.module("WhatsAppDesktop", [
 ]);
 
 var config = function($routeProvider, $stateProvider, $locationProvider, $mdThemingProvider, $mdIconProvider) {
-  // $locationProvider.html5Mode({enabled: true, requireBase: true});
-  routeProvider = $routeProvider;
-  stateProvider = $stateProvider;
   $routeProvider
     .when("/", {
       controller: "ChatsController",
@@ -33,6 +30,8 @@ var config = function($routeProvider, $stateProvider, $locationProvider, $mdThem
 WhatsAppDesktop.config(config);
 
 WhatsAppDesktop.run(function($rootScope, $location, $localStorage, LoginService, WhatsAppService) {
+
+  // check is logged in? if not redirect to login page;
   if (! WhatsAppService.isLoggedIn()) {
     if ($localStorage.whatsappInfo !== undefined) {
       LoginService.login($localStorage.whatsappInfo);

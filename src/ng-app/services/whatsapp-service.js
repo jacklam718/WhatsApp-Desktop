@@ -1,15 +1,14 @@
-// "use strict";
+"use strict";
 
 var WhatsAppService = function($rootScope, $q) {
   var whatsApi = require('whatsapi');
-  fs = require("fs");
-  console.log(global);
+  var fs = require("fs");
+
   return {
     createAdapter: function(argument) {
       var self = this;
       self.whatsApi = whatsApi.createAdapter(argument);
-      wa = self.whatsApi;
-      console.log("createAdapter: ", self.whatsApi);
+      console.log("createAdapter");
     },
 
     login: function(logged, whatsAppInfo) {
@@ -26,7 +25,7 @@ var WhatsAppService = function($rootScope, $q) {
             deferred.reject(err);
             return;
           }
-          
+
           console.log("Logged in to WA server");
           self.whatsApi.sendIsOnline();
           deferred.resolve(true);

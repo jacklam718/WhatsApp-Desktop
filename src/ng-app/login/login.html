@@ -11,7 +11,7 @@
             <md-progress-circular md-mode="indeterminate" ng-show="onLoginIn"></md-progress-circular>
           </section>
 
-          <section class="section-warning" layout="row" md-theme="default" layout-sm="column" layout-align="space-around">
+          <section class="section-warning" ng-show="errorMessage !== ''" layout="row" md-theme="default" layout-sm="column" layout-align="space-around">
             {{errorMessage}}
           </section>
 

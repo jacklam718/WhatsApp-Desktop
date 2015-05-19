@@ -7,14 +7,15 @@ var SlidebarController = function($scope, WhatsAppService) {
   }
 
   $scope.requestGroupsList = function () {
-    WhatsAppService.requestGroupsList().then(
-      function(groupsList) {
-        $scope.groups = groupsList;
-      },
-      function(err) {
-        console.error("error: ", err);
-      }
-    )
+    var sucess = function (groupsList) {
+      $scope.groups = groupsList;
+    };
+
+    var failgure = function(err) {
+      console.error("error: ", err);
+    };
+
+    WhatsAppService.requestGroupsList().then(sucess, failgure);
   };
 
   $scope.reload = function() {
