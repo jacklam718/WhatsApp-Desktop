@@ -4,17 +4,48 @@
   "description": "A whatsapp desktop app",
   "main": "src/index.html",
   "scripts": {
-    "start": "Gulp"
+    "gulp": "gulp"
   },
   "author": "Jack Lam",
   "license": "MIT",
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "compact": false,
+          "only": [
+            "./src/scripts/"
+          ]
+        }
+      ]
+    ]
+  },
+  "browser": {
+    "angular": "./bower_components/angular/index.js",
+    "angular-material": "./bower_components/angular-material/index.js"
+  },
   "dependencies": {
-    "gulp-util": "^3.0.4",
-    "node-sass": "^3.0.0",
+    "partialify": "^3.1.5",
     "whatsapi": "^1.0.2"
   },
   "devDependencies": {
-    "gulp": "^3.8.11",
-    "node-webkit-builder": "^1.0.11"
+    "browser-sync": "^2.8.0",
+    "browserify": "^11.0.0",
+    "gulp": "^3.9.0",
+    "gulp-load-plugins": "^1.0.0-rc.1",
+    "gulp-notify": "^2.2.0",
+    "gulp-sass": "^2.0.4",
+    "gulp-server-livereload": "^1.4.0",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-util": "^3.0.6",
+    "lodash.assign": "^3.2.0",
+    "node-sass": "^3.0.0",
+    "node-webkit-builder": "^1.0.11",
+    "postcss": "^4.1.16",
+    "pretty-hrtime": "^1.0.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.0.0",
+    "watchify": "^3.3.0"
   }
 }
